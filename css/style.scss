@@ -32,6 +32,9 @@ body {
   font-size: 100%;
   line-height: 1.2;
 }
+main > * {
+  transition: opacity 0.6s ease-out;
+}
 h1,
 h2,
 h3,
@@ -114,6 +117,11 @@ p {
 header {
   padding: 50px 0;
   text-align: center;
+  .brand {
+    img {
+      transition: transform 0.5s ease-out;
+    }
+  }
 }
 /* Navigations */
 nav.main-nav {
@@ -122,6 +130,16 @@ nav.main-nav {
   li {
     display: inline-block;
     margin: 0 9px;
+    transition: transform 0.3s ease-out, opacity 0.5s ease-out;
+    &:nth-of-type(2) {
+      transition-delay: 100ms;
+    }
+    &:nth-of-type(3) {
+      transition-delay: 200ms;
+    }
+    &:nth-of-type(4) {
+      transition-delay: 300ms;
+    }
     a {
       display: block;
       transition: all 0.7s;
@@ -202,20 +220,21 @@ section.portfolio {
 }
 
 /*------- About Page -------*/
-section.content {
-  a {
-    text-decoration: underline;
-  }
-  .container-fluid {
-    padding: 0;
-    @media #{$tablet} {
-      padding: 0 35px;
-    }
-    .wrapper > * {
-      padding-left: 15px;
-      padding-right: 15px;
+section.container-fluid {
+  .content {
+    a {
+      text-decoration: underline;
     }
   }
+  padding: 0;
+  @media #{$tablet} {
+    padding: 0 35px;
+  }
+  .wrapper > * {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
   p {
     margin-bottom: 30px;
   }
@@ -256,6 +275,9 @@ section.content {
     }
   }
   #sticky {
+    @media screen and (min-width: 901px) {
+      position: relative;
+    }
     .table {
       margin-top: 30px;
       tr td {
@@ -270,6 +292,12 @@ section.content {
         a {
           display: block;
         }
+      }
+    }
+    &.sticky {
+      @media screen and (min-width: 901px) {
+        position: fixed;
+        width: 26.5%;
       }
     }
   }
