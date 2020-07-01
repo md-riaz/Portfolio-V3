@@ -4,7 +4,7 @@ window.onload = (e) => {
   const logo = document.querySelector(".brand img");
   const navLinks = document.querySelectorAll("nav > li");
   const sticky = document.querySelector("#sticky");
-  const stickyLimit = document.querySelector(".sticky-limit");
+  const stickyHolder = document.querySelector("#sticky-holder");
   const a = document.querySelectorAll("a");
   const fsSlides = document.querySelectorAll(".portfolio_slider_images li");
   const fsSlidesLinks = document.querySelectorAll(
@@ -12,6 +12,7 @@ window.onload = (e) => {
   );
   const splitting = document.querySelectorAll("[data-splitting]");
   const zipEffect = document.querySelectorAll(".zip-it");
+  const typedEl = document.querySelectorAll(".typed");
   const form = document.querySelector("#form");
   const Anchordelay = 500; // in milliseconds
   const fsSlideDelay = 3000; // in milliseconds
@@ -88,9 +89,15 @@ window.onload = (e) => {
   function stickyAnim() {
     if (sticky) {
       const stickyPos = sticky.offsetTop;
+      let stickyLimit =
+        stickyHolder.offsetTop +
+        stickyHolder.scrollHeight -
+        sticky.offsetHeight;
+
       if (
         window.pageYOffset > stickyPos &&
-        window.pageYOffset <= stickyLimit.scrollHeight + 300
+        window.pageYOffset > stickyHolder.offsetTop - 30 &&
+        window.pageYOffset <= stickyLimit
       ) {
         sticky.style.top = 0;
         sticky.classList.add("sticky");
@@ -132,13 +139,15 @@ window.onload = (e) => {
   /* =========================
     Typed js animation
 ============================= */
-  var typed = new Typed(".typed", {
-    strings: ["Write me, Please", "Hola", "こんにちは", "Aloha", "Ciao"],
-    typeSpeed: 0,
-    backSpeed: 50,
-    smartBackspace: true, // this is a default
-    loop: true,
-  });
+  if (typedEl) {
+    var typed = new Typed(typedEl, {
+      strings: ["Write me, Please", "Hola", "こんにちは", "Aloha", "Ciao"],
+      typeSpeed: 0,
+      backSpeed: 50,
+      smartBackspace: true, // this is a default
+      loop: true,
+    });
+  }
 
   /* =========================
     form submit

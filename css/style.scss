@@ -65,6 +65,7 @@ a {
 }
 img {
   max-width: 100%;
+  vertical-align: middle;
 }
 p {
   font-size: 1rem;
@@ -110,6 +111,23 @@ p {
 .content {
   max-width: 1400px;
   margin: 0 auto;
+}
+.columns {
+  --s: 1rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: calc(var(--s) / 2 * -1);
+  margin-right: calc(var(--s) / 2 * -1);
+  .col {
+    width: calc(var(--w, 50%) - 1rem);
+    padding-left: calc(var(--s) / 2);
+    padding-right: calc(var(--s) / 2);
+    * > {
+      text-align: center;
+    }
+  }
 }
 // header
 header {
@@ -255,6 +273,18 @@ section.portfolio_slider {
   }
 }
 
+/*------- Work details Page -------*/
+#work-details {
+  text-align: center;
+  h1 {
+    font-size: 7rem;
+    margin: 40px auto;
+  }
+  p {
+    max-width: 500px;
+    margin: 40px auto;
+  }
+}
 /*------- About Page -------*/
 section.container-fluid {
   .content {
