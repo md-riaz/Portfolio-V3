@@ -12,6 +12,7 @@ window.onload = (e) => {
   );
   const splitting = document.querySelectorAll("[data-splitting]");
   const zipEffect = document.querySelectorAll(".zip-it");
+  const form = document.querySelector("#form");
   const Anchordelay = 500; // in milliseconds
   const fsSlideDelay = 3000; // in milliseconds
 
@@ -98,7 +99,6 @@ window.onload = (e) => {
       }
     }
   }
-  window.requestAnimationFrame(stickyAnim);
 
   /* =========================
     Anchor tag click delay
@@ -130,7 +130,7 @@ window.onload = (e) => {
   });
 
   /* =========================
- Typed js animation
+    Typed js animation
 ============================= */
   var typed = new Typed(".typed", {
     strings: ["Write me, Please", "Hola", "こんにちは", "Aloha", "Ciao"],
@@ -139,4 +139,39 @@ window.onload = (e) => {
     smartBackspace: true, // this is a default
     loop: true,
   });
+
+  /* =========================
+    form submit
+============================= */
+  form.addEventListener("submit", handleForm);
+  function handleForm(ev) {
+    ev.preventDefault(); //stop the page reloading
+    let formData = new FormData(form);
+
+    //add more things that were not in the form
+    // formData.append("api-key", "myApiKey");
+
+    // look at all the contents
+    for (let key of formData.keys()) {
+      console.log(key, formData.get(key));
+    }
+
+    //send the request with formData
+    let url = form.getAttribute("action");
+    let method = form.getAttribute("method");
+    let req = new Request(url, {
+      body: formData,
+      method: method,
+    });
+
+    fetch(req)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log("response from server", data);
+        document.querySelector(".response").innerHTML = data;
+      })
+      .catch(console.warn);
+  }
 };

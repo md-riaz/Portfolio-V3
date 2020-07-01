@@ -33,7 +33,12 @@
             <div class="intro">
               <span class="typed">Write me, Please</span>
             </div>
-            <form id="form" action="#" class="contact-form">
+            <form
+              id="form"
+              action="../php/mail.php"
+              class="contact-form"
+              method="POST"
+            >
               <label>What's your name? *</label>
               <input required="" type="text" name="name" />
               <label>Phone number</label>
@@ -45,6 +50,7 @@
               <button id="send" type="submit" class="btn">
                 Send message</button
               ><span class="p-md">* These fields are required</span>
+              <p class="response"></p>
             </form>
           </div>
         </section>
