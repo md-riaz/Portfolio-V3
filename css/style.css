@@ -28,10 +28,6 @@ body {
   font-size: 100%;
   line-height: 1.2; }
 
-main > * {
-  -webkit-transition: opacity 0.6s ease-out;
-  transition: opacity 0.6s ease-out; }
-
 h1,
 h2,
 h3,
@@ -117,18 +113,26 @@ p {
   margin: 0 auto; }
 
 header {
-  padding: 50px 0;
+  padding: 20px 0 20px;
   text-align: center; }
-  header .brand img {
-    -webkit-transition: -webkit-transform 0.5s ease-out;
-    transition: -webkit-transform 0.5s ease-out;
-    transition: transform 0.5s ease-out;
-    transition: transform 0.5s ease-out, -webkit-transform 0.5s ease-out; }
+  @media (min-width: 768px) {
+    header {
+      padding: 40px 0; } }
+  header .brand {
+    display: inline-block; }
+    header .brand img {
+      -webkit-transition: -webkit-transform 0.5s ease-out;
+      transition: -webkit-transform 0.5s ease-out;
+      transition: transform 0.5s ease-out;
+      transition: transform 0.5s ease-out, -webkit-transform 0.5s ease-out; }
 
 /* Navigations */
 nav.main-nav {
-  margin: 25px -15px 0;
+  margin-top: 10px;
   padding: 0; }
+  @media (min-width: 768px) {
+    nav.main-nav {
+      margin: 25px -15px 0; } }
   nav.main-nav li {
     display: inline-block;
     margin: 0 9px;
@@ -146,13 +150,16 @@ nav.main-nav {
       -webkit-transition-delay: 300ms;
               transition-delay: 300ms; }
     nav.main-nav li a {
+      font-size: 1.2rem;
       display: block;
       -webkit-transition: all 0.7s;
       transition: all 0.7s;
       color: var(--clr-black);
-      font-size: 1.01rem;
       text-transform: capitalize;
       position: relative; }
+      @media (min-width: 768px) {
+        nav.main-nav li a {
+          font-size: 1.01rem; } }
       nav.main-nav li a::after {
         position: absolute;
         content: "";
@@ -167,27 +174,66 @@ nav.main-nav {
         width: 100%; }
 
 /* Portfolio / Works */
-section.portfolio {
-  height: 100%; }
-  section.portfolio .images {
+section.portfolio_slider {
+  height: 100%;
+  margin: 20px 15px 0; }
+  section.portfolio_slider .portfolio_slider_images {
     height: 100%;
     padding-bottom: 60px; }
-    section.portfolio .images li {
+    section.portfolio_slider .portfolio_slider_images li {
       background-size: cover;
       background-position: center center;
       height: 100%;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex; }
-    section.portfolio .images h1 {
+      display: none;
+      opacity: 0;
+      -webkit-transition: opacity 1s ease-in;
+      transition: opacity 1s ease-in; }
+      section.portfolio_slider .portfolio_slider_images li.active {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-animation-name: fadeIn;
+                animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+        -webkit-animation-timing-function: linear;
+                animation-timing-function: linear;
+        -webkit-animation-delay: 0ms;
+                animation-delay: 0ms;
+        -webkit-animation-iteration-count: 1;
+                animation-iteration-count: 1;
+        -webkit-animation-direction: normal;
+                animation-direction: normal;
+        -webkit-animation-fill-mode: forwards;
+                animation-fill-mode: forwards; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+    section.portfolio_slider .portfolio_slider_images h1 {
+      font-size: 4.5rem;
       text-align: center;
       margin-top: auto;
       margin-bottom: auto;
-      font-size: 10em;
       line-height: 1;
       width: 100%;
       mix-blend-mode: overlay; }
-  section.portfolio .navigation {
+      @media (min-width: 1024px) {
+        section.portfolio_slider .portfolio_slider_images h1 {
+          font-size: 10rem; } }
+      section.portfolio_slider .portfolio_slider_images h1::-moz-selection {
+        background-color: var(--clr-white); }
+      section.portfolio_slider .portfolio_slider_images h1::selection {
+        background-color: var(--clr-white); }
+  section.portfolio_slider .portfolio_slider_navigation {
     margin-top: -60px;
     height: 60px;
     width: 100%;
@@ -196,20 +242,20 @@ section.portfolio {
     overflow-x: scroll;
     overflow-y: hidden; }
     @media (min-width: 768px) {
-      section.portfolio .navigation {
+      section.portfolio_slider .portfolio_slider_navigation {
         overflow: hidden; } }
-    section.portfolio .navigation li {
+    section.portfolio_slider .portfolio_slider_navigation li {
       display: inline-block;
       margin: 0 5px; }
-      section.portfolio .navigation li a {
+      section.portfolio_slider .portfolio_slider_navigation li a {
         height: 60px;
         line-height: 60px;
         color: var(--clr-nearWhite);
-        font-size: 1.1em;
+        font-size: 1rem;
         font-weight: 600;
         -webkit-transition: all 0.7s;
         transition: all 0.7s; }
-      section.portfolio .navigation li.active a {
+      section.portfolio_slider .portfolio_slider_navigation li.active a {
         color: var(--clr-black); }
 
 /*------- About Page -------*/
@@ -250,10 +296,8 @@ section.container-fluid {
                 flex-grow: 999;
         min-width: calc(65% - var(--space)); }
   section.container-fluid .selfie img {
-    margin: 15px 0;
-    margin-top: 50px; }
+    margin: 15px 0; }
   section.container-fluid h1 {
-    margin-top: 40px;
     margin-bottom: 75px;
     font-weight: 400;
     font-family: var(--f-Playfair);
@@ -292,8 +336,6 @@ section.container-fluid {
     text-align: center; }
     section.container-fluid .title h4 {
       font-size: 1.1rem; }
-  section.container-fluid img {
-    margin: 15px 0; }
 
 /*------- Blog Page -------*/
 #blogs a.blog-item {
@@ -444,4 +486,72 @@ footer .pagination {
       background: var(--clr-black-6); }
   #contact form.contact-form span {
     font-family: var(--f-Playfair); }
+
+/* Transition and animation */
+main > * {
+  -webkit-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+  opacity: 0; }
+
+header .brand img {
+  -webkit-transition-delay: 0.6s;
+          transition-delay: 0.6s;
+  -webkit-transform: scale(0);
+          transform: scale(0); }
+
+nav > li {
+  opacity: 0;
+  -webkit-transform: matrix(1, 0, 0, 1, -50, -15);
+          transform: matrix(1, 0, 0, 1, -50, -15); }
+
+/* splliting js animation */
+.zip-it .char {
+  color: var(--clr-black); }
+
+.zip-it .char,
+.zip-it .char:before,
+.zip-it .char:after {
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.75, 0, 0.25, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.75, 0, 0.25, 1);
+  transition: transform 0.8s cubic-bezier(0.75, 0, 0.25, 1);
+  transition: transform 0.8s cubic-bezier(0.75, 0, 0.25, 1), -webkit-transform 0.8s cubic-bezier(0.75, 0, 0.25, 1);
+  -webkit-transition-delay: calc(0.2s * var(--distance-percent));
+          transition-delay: calc(0.2s * var(--distance-percent)); }
+
+.zip-it .char:before,
+.zip-it .char:after {
+  visibility: visible;
+  color: var(--clr-white); }
+
+.zip-it .char:before {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 54%, 0 54%);
+          clip-path: polygon(0 0, 100% 0, 100% 54%, 0 54%); }
+
+.zip-it .char:after {
+  -webkit-clip-path: polygon(0 46%, 100% 46%, 100% 100%, 0 100%);
+          clip-path: polygon(0 46%, 100% 46%, 100% 100%, 0 100%); }
+
+.zip-it:hover .char:before,
+.zip-it.animate .char:before {
+  -webkit-transform: translateY(-45%) scaleY(0);
+          transform: translateY(-45%) scaleY(0); }
+
+.zip-it:hover .char:after,
+.zip-it.animate .char:after {
+  -webkit-transform: translateY(45%) scaleY(0);
+          transform: translateY(45%) scaleY(0); }
+
+.zip-it .char,
+.zip-it .char:before,
+.zip-it .char:after {
+  -webkit-transition-delay: calc(0.5s * (1 - var(--char-percent)));
+          transition-delay: calc(0.5s * (1 - var(--char-percent))); }
+
+.zip-it:hover .char,
+.zip-it:hover .char:before,
+.zip-it:hover .char:after, .zip-it.animate .char,
+.zip-it.animate .char:before,
+.zip-it.animate .char:after {
+  -webkit-transition-delay: calc(0.5s * var(--char-percent));
+          transition-delay: calc(0.5s * var(--char-percent)); }
 /*# sourceMappingURL=style.css.map */

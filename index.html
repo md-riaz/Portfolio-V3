@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Riaz - Works</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting-cells.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -18,14 +26,32 @@
         </nav>
       </header>
       <main class="flex-grow-1">
-        <section class="portfolio">
-          <ul class="images">
+        <section class="portfolio_slider">
+          <ul class="portfolio_slider_images">
             <li style="background-image: url(images/portfolio/wake-up.jpg);">
-              <h1>Wakey wake</h1>
+              <h1 class="zip-it" data-splitting>Wakey wake</h1>
+            </li>
+            <li style="background-image: url(images/portfolio/blue-bag.jpg);">
+              <h1 class="zip-it" data-splitting>Saints Bag</h1>
+            </li>
+            <li style="background-image: url(images/portfolio/face-side.jpg);">
+              <h1 class="zip-it" data-splitting>67 Jewelry</h1>
+            </li>
+            <li
+              style="background-image: url(images/portfolio/yellow-book.jpg);"
+            >
+              <h1 class="zip-it" data-splitting>Nasty Paper</h1>
+            </li>
+            <li style="background-image: url(images/portfolio/vui.jpg);">
+              <h1 class="zip-it" data-splitting>Pluch</h1>
+            </li>
+
+            <li style="background-image: url(images/portfolio/logo-a.jpg);">
+              <h1 class="zip-it" data-splitting>Vpside down</h1>
             </li>
           </ul>
-          <ul class="navigation">
-            <li class="active"><a href="#">Wakey wake</a></li>
+          <ul class="portfolio_slider_navigation">
+            <li><a href="#">Wakey wake</a></li>
             <li><a href="#">Saints Bag</a></li>
             <li><a href="#">67 Jewelry</a></li>
             <li><a href="#">Nasty Paper</a></li>
@@ -35,6 +61,7 @@
         </section>
       </main>
     </section>
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
