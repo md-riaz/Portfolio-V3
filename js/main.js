@@ -10,10 +10,14 @@ window.onload = (e) => {
   const fsSlidesLinks = document.querySelectorAll(
     ".portfolio_slider_navigation li"
   );
+  const splitting = document.querySelectorAll("[data-splitting]");
   const zipEffect = document.querySelectorAll(".zip-it");
   const Anchordelay = 500; // in milliseconds
   const fsSlideDelay = 3000; // in milliseconds
 
+  if (splitting.length) {
+    Splitting();
+  }
   /* =========================
   Default state on page load
  ============================= */
@@ -31,7 +35,6 @@ window.onload = (e) => {
 ============================= */
   // Only trigger the fullscreen portfolio function when it's available
   if (fsSlides.length) {
-    Splitting();
     // set first element as active
     [...fsSlides][0].classList.add("active");
     [...fsSlidesLinks][0].classList.add("active");
