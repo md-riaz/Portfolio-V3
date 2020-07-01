@@ -152,35 +152,37 @@ window.onload = (e) => {
   /* =========================
     form submit
 ============================= */
-  form.addEventListener("submit", handleForm);
-  function handleForm(ev) {
-    ev.preventDefault(); //stop the page reloading
-    let formData = new FormData(form);
+  if (form) {
+    form.addEventListener("submit", handleForm);
+    function handleForm(ev) {
+      ev.preventDefault(); //stop the page reloading
+      let formData = new FormData(form);
 
-    //add more things that were not in the form
-    // formData.append("api-key", "myApiKey");
+      //add more things that were not in the form
+      // formData.append("api-key", "myApiKey");
 
-    // look at all the contents
-    for (let key of formData.keys()) {
-      console.log(key, formData.get(key));
+      // look at all the contents
+      for (let key of formData.keys()) {
+        console.log(key, formData.get(key));
+      }
+
+      //send the request with formData
+      let url = form.getAttribute("action");
+      let method = form.getAttribute("method");
+      let req = new Request(url, {
+        body: formData,
+        method: method,
+      });
+
+      fetch(req)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          console.log("response from server", data);
+          document.querySelector(".response").innerHTML = data;
+        })
+        .catch(console.warn);
     }
-
-    //send the request with formData
-    let url = form.getAttribute("action");
-    let method = form.getAttribute("method");
-    let req = new Request(url, {
-      body: formData,
-      method: method,
-    });
-
-    fetch(req)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log("response from server", data);
-        document.querySelector(".response").innerHTML = data;
-      })
-      .catch(console.warn);
   }
 };
