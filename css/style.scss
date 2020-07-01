@@ -265,6 +265,10 @@ section.portfolio_slider {
         font-size: 1rem;
         font-weight: 600;
         transition: all 0.7s;
+        &:hover {
+          text-decoration: underline;
+          color: var(--clr-black);
+        }
       }
       &.active a {
         color: var(--clr-black);

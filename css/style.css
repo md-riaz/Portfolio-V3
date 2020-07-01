@@ -276,6 +276,9 @@ section.portfolio_slider {
         font-weight: 600;
         -webkit-transition: all 0.7s;
         transition: all 0.7s; }
+        section.portfolio_slider .portfolio_slider_navigation li a:hover {
+          text-decoration: underline;
+          color: var(--clr-black); }
       section.portfolio_slider .portfolio_slider_navigation li.active a {
         color: var(--clr-black); }
 
