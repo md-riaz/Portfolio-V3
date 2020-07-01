@@ -288,6 +288,8 @@ section.portfolio_slider {
   #work-details p {
     max-width: 500px;
     margin: 40px auto; }
+  #work-details img {
+    margin: 10px auto; }
 
 /*------- About Page -------*/
 section.container-fluid {
