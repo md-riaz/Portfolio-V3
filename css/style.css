@@ -437,6 +437,11 @@ footer .pagination {
 
 #contact .intro {
   text-align: center; }
+  #contact .intro .typed,
+  #contact .intro .typed-cursor {
+    font-family: var(--f-Playfair);
+    font-weight: 400;
+    font-size: 2.5rem; }
 
 #contact form.contact-form {
   margin: 15px;

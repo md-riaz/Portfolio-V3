@@ -98,6 +98,7 @@ window.onload = (e) => {
       }
     }
   }
+  window.requestAnimationFrame(stickyAnim);
 
   /* =========================
     Anchor tag click delay
@@ -126,5 +127,16 @@ window.onload = (e) => {
         }, Anchordelay);
       });
     }
+  });
+
+  /* =========================
+ Typed js animation
+============================= */
+  var typed = new Typed(".typed", {
+    strings: ["Write me, Please", "Hola", "こんにちは", "Aloha", "Ciao"],
+    typeSpeed: 0,
+    backSpeed: 50,
+    smartBackspace: true, // this is a default
+    loop: true,
   });
 };
