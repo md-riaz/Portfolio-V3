@@ -12,7 +12,7 @@ window.onload = (e) => {
   );
   const splitting = document.querySelectorAll("[data-splitting]");
   const zipEffect = document.querySelectorAll(".zip-it");
-  const typedEl = document.querySelectorAll(".typed");
+  const typedEl = document.querySelector(".typed");
   const form = document.querySelector("#form");
   const Anchordelay = 500; // in milliseconds
   const fsSlideDelay = 3000; // in milliseconds
